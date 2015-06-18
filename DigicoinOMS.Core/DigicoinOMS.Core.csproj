@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B091700E-E89D-42BD-A55B-EAC90F722A87}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DigicoinOMS.Core</RootNamespace>
+    <AssemblyName>DigicoinOMS.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ProcessorBase.cs" />
+    <Compile Include="Model\ClientOrder.cs" />
+    <Compile Include="Api\Dto\OrderRequest.cs" />
+    <Compile Include="Api\Dto\OrderStatus.cs" />
+    <Compile Include="DataAccess\InMemoryClientManager.cs" />
+    <Compile Include="DataAccess\InMemoryOrderStore.cs" />
+    <Compile Include="MarketConnectivity\IProcessableSubscriber.cs" />
+    <Compile Include="MarketConnectivity\IOrderStatusPublisher.cs" />
+    <Compile Include="MarketConnectivity\IQuoteRequestor.cs" />
+    <Compile Include="Model\IProcessable.cs" />
+    <Compile Include="Model\Participants\Client.cs" />
+    <Compile Include="Model\Participants\Broker.cs" />
+    <Compile Include="DataAccess\IClientManager.cs" />
+    <Compile Include="MarketConnectivity\IExecutionRequestor.cs" />
+    <Compile Include="Model\MarketQuote.cs" />
+    <Compile Include="Model\Execution.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Order\OrderState.cs" />
+    <Compile Include="Model\IndividualBrokerQuote.cs" />
+    <Compile Include="Model\Order\Side.cs" />
+    <Compile Include="Components\ExecutionProcessor.cs" />
+    <Compile Include="Components\OrderStateMonitor.cs" />
+    <Compile Include="Components\QuoteProcessor.cs" />
+    <Compile Include="Components\Selectors\BestDealSingleQuoteSelector.cs" />
+    <Compile Include="Components\QuoteCreation\BrokerQuantityRestrictedQuoteRequestCreator.cs" />
+    <Compile Include="Components\QuoteCreation\IQuoteRequestCreator.cs" />
+    <Compile Include="Components\Selectors\IQuoteSelector.cs" />
+    <Compile Include="Components\Validation\BasicOrderValidator.cs" />
+    <Compile Include="Components\Validation\IOrderValidator.cs" />
+    <Compile Include="DataAccess\IOrderStore.cs" />
+    <Compile Include="Components\ClientOrderProcessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\DigiCoinReportGenerator.cs" />
+    <Compile Include="Utilities\IAuditLog.cs" />
+    <Compile Include="Utilities\IAuditLogReader.cs" />
+    <Compile Include="Utilities\InMemoryAuditLog.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
